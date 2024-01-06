@@ -1,8 +1,13 @@
+
+
 body,
 html{
 	padding: 0;
 	margin: 0;
 	height: 100vh;
+	background: rgb(17 24 39);
+	color:#e5e7eb;
+
 }
 
 header{
@@ -10,12 +15,13 @@ header{
 	justify-content: space-around;
 	height: 10%;
 	align-items: center;
+	box-shadow: 2px 1px 10px #e5e7eb ;
+	
 
 }
 
 #layout{
 	display: grid;
-	border: 5px solid red;
 	height: 100%;
 }
 
@@ -31,29 +37,37 @@ header{
 
 #plusDiv{
 	display:flex;
-	background: gray;
-	height: 20%;
+	background: rgb(226, 224, 224);
+	height: 35%;
 	justify-content: center;
 	align-items: center;
 	border-radius: 5px;
 	
 	
+	
 }
 
 li{
-	display:flex;
+	display:inline-block;
 	list-style-type: none;
 	height: 80%;
 	width: 60%;
+	text-align: center;
+	white-space: pre-line;
+	line-height:2.5;
 }
 button{
 	width:5%;
 	height:30%;
 	border: none;
+	padding: 2px;
+	border-radius: 3px;
+	font-weight: bold;
+	background: rgb(226, 224, 224);
 }
 
 button:hover{
-	background: darkgray;
+	background: rgb(169, 169, 169);
 }
 
 #inputTitle {
@@ -72,7 +86,7 @@ button:hover{
 
 #inputWindow{
 	display: flex;
-	background-color: blue;
+	background-color: rgb(211, 211, 214);
 	height: 25%;
 	width: 25%;
 	top: 35%;
@@ -84,10 +98,54 @@ button:hover{
 	align-items: center;
 	flex-direction:column;
 	gap: 10px;
+	opacity: 0;
+	animation: fadeIn 0.5s forwards;
 
+}
+
+@keyframes fadeIn{
+	from {
+	opacity:0;
+	transform:scale(0,0)
+}
+	to {
+	opacity:1;
+	transform:scale(1,1);
+	}
+}
+
+@keyframes fadeOut{
+	from {
+		opacity:1;
+		transform:scale(1,1);
+		}
+	to {
+	opacity:1;
+	transform:scale(1,1);
+	}
 }
 
 #submit{
 	width: 20%;
 	height: 10%;
+}
+#remove{
+	width: 20%;
+	height: 10%;
+}
+
+
+#plusDiv:hover{
+	background: rgb(169, 169, 169);
+}
+
+input{
+	outline: none;
+	border: none;
+}
+
+input:focus{
+	border: 5px solid #000000;
+	transition: 0.5s;
+	border-radius: 2px;
 }
