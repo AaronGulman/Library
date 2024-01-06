@@ -41,6 +41,18 @@ addNewBook.addEventListener('click', ()=>{
 	submit.textContent = 'SUBMIT'
 	inputWindow.appendChild(submit)
 	
+	document.addEventListener('keydown', function(event){
+		if(event.key === 'Escape'){
+			inputWindow.remove()
+		}
+	})
+
+	document.addEventListener('dblclick', function(event){
+		if(!inputWindow.contains(event.target) ){
+			console.log('Click event');
+			inputWindow.remove()
+		}
+	})
 
 	submit.addEventListener('click',() =>{
 		createBooks()
