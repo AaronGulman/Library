@@ -4,6 +4,7 @@ let unorderList = document.querySelector('ul')
 
 
 
+
 addNewBook.addEventListener('click', ()=>{
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
@@ -11,6 +12,7 @@ addNewBook.addEventListener('click', ()=>{
 	let submit = document.createElement('button')
 	let inputWindow = document.createElement('div')
 	
+
 	console.log('Clicked')
 
 	inputWindow.height = 400;
@@ -38,12 +40,12 @@ addNewBook.addEventListener('click', ()=>{
 	submit.setAttribute('type','submit')
 	submit.textContent = 'SUBMIT'
 	inputWindow.appendChild(submit)
+	
 
 	submit.addEventListener('click',() =>{
 		createBooks()
 		inputWindow.remove()
 	})
-
 
 })
 
@@ -67,11 +69,18 @@ function createBooks(){
 	let author = document.createElement('h2');
 	let pages = document.createElement('h2')
 	let read = document.createElement('h2')
+	let btnRemove = document.createElement('button')
+
+	btnRemove.setAttribute('id','remove')
+	btnRemove.setAttribute('type','remove')
+	btnRemove.textContent = 'REMOVE';
 	
 	newBook.appendChild(title);
 	newBook.appendChild(author);
 	newBook.appendChild(pages);
 	newBook.appendChild(read);
+	newBook.appendChild(btnRemove)
+
 	
 	title.textContent = addBook.title
 	author.textContent = addBook.author
@@ -80,10 +89,15 @@ function createBooks(){
 
 	myLibrary.push(newBook)
 	console.log(myLibrary)
+
+		
+	btnRemove.addEventListener('click',()=>{
+		newBook.remove()
+	})
 }
 
 
-function removeBooks(){
+function removeBook(){
 	
 }
 
