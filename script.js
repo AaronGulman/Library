@@ -90,6 +90,7 @@ function createBooks(){
 	let pageDisplay = document.createElement('p');
 
 
+
 	//li > divs 
 	let titleBox = document.createElement('div')
 	let authorBox = document.createElement('div')
@@ -127,7 +128,7 @@ function createBooks(){
 
 
 
-	pageDisplay.textContent = 'Last page: 3'	
+	pageDisplay.textContent = 'Last page: '	
 
 
 
@@ -153,7 +154,6 @@ function createBooks(){
 	authorBox.appendChild(author)
 	pagesBox.appendChild(pages)
 	readBox.appendChild(read)
-	bookmark.appendChild(pageDisplay)
 	bookmark.appendChild(addPg)
 	bookmark.appendChild(pageDisplay)
 	bookmark.appendChild(removePg)
@@ -177,6 +177,24 @@ function createBooks(){
 		
 	btnRemove.addEventListener('click',()=>{
 		newBook.remove()
+	})
+	let increment = 0;
+
+	addPg.addEventListener('click',(event)=>{
+		// for(let i = 0; i<3;i++){
+			if(increment < addBook.pages){
+			increment ++
+			} else{
+				alert('Exceeds the number of pages')
+			}
+
+			pageDisplay.textContent = `Last page: ${increment}`;
+		// }
+	})
+
+	removePg.addEventListener('click',()=>{
+		increment--
+		pageDisplay.textContent = `Last page: ${increment}`;
 	})
 }
 
