@@ -11,6 +11,9 @@ addNewBook.addEventListener('click', ()=>{
 	let inputPages = document.createElement('input')
 	let submit = document.createElement('button')
 	let inputWindow = document.createElement('div')
+	if(inputWindow){
+		//disable all elements when the inputWindow is true
+	}
 	
 
 	console.log('Clicked')
@@ -51,6 +54,7 @@ addNewBook.addEventListener('click', ()=>{
 		if(!inputWindow.contains(event.target) ){
 			console.log('Click event');
 			inputWindow.remove()
+			
 		}
 	})
 
@@ -77,23 +81,47 @@ function createBooks(){
 	let addBook = new Book(inputTitle.value,inputAuthor.value,inputPages.value,false);
 	let newBook = document.createElement('li')
 	unorderList.appendChild(newBook)
+
+	//li > h elements
 	let title = document.createElement('h1');
 	let author = document.createElement('h2');
 	let pages = document.createElement('h2')
 	let read = document.createElement('h2')
+
+
+	//li > divs 
+	let removeBox = document.createElement('div')
+	let pagesBox = document.createElement('div')
+	let titleBox = document.createElement('div')
+	let authorBox = document.createElement('div')
+
+	//properties have't been created yet
+	let readBox = document.createElement('div')
+
+	//li > buttons
 	let btnRemove = document.createElement('button')
 
+	//divs properties
+	removeBox.setAttribute('class','removeBox')
+
+
+	//btn properties
 	btnRemove.setAttribute('id','remove')
 	btnRemove.setAttribute('type','remove')
 	btnRemove.textContent = 'REMOVE';
 	
+	// newBook appended elements
 	newBook.appendChild(title);
 	newBook.appendChild(author);
 	newBook.appendChild(pages);
 	newBook.appendChild(read);
-	newBook.appendChild(btnRemove)
+	newBook.appendChild(removeBox)
 
+	//appended to divs elements
+	removeBox.appendChild(btnRemove)
+	pagesBox.appendChild(pagesBox)
 	
+	//input content
 	title.textContent = addBook.title
 	author.textContent = addBook.author
 	pages.textContent = addBook.pages
