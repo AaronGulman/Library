@@ -90,19 +90,24 @@ function createBooks(){
 
 
 	//li > divs 
-	let removeBox = document.createElement('div')
-	let pagesBox = document.createElement('div')
 	let titleBox = document.createElement('div')
 	let authorBox = document.createElement('div')
-
-	//properties have't been created yet
+	let pagesBox = document.createElement('div')
 	let readBox = document.createElement('div')
+	let removeBox = document.createElement('div')
+
 
 	//li > buttons
 	let btnRemove = document.createElement('button')
 
 	//divs properties
+	titleBox.setAttribute('class','titleBox')
+	authorBox.setAttribute('class','authorBox')
+	pagesBox.setAttribute('class','pagesBox')
+	readBox.setAttribute('class','readBox')
 	removeBox.setAttribute('class','removeBox')
+
+
 
 
 	//btn properties
@@ -111,15 +116,20 @@ function createBooks(){
 	btnRemove.textContent = 'REMOVE';
 	
 	// newBook appended elements
-	newBook.appendChild(title);
-	newBook.appendChild(author);
-	newBook.appendChild(pages);
-	newBook.appendChild(read);
+	newBook.appendChild(titleBox);
+	newBook.appendChild(authorBox);
+	newBook.appendChild(pagesBox);
+	newBook.appendChild(readBox);
 	newBook.appendChild(removeBox)
 
 	//appended to divs elements
+	titleBox.appendChild(title)
+	authorBox.appendChild(author)
+	pagesBox.appendChild(pages)
+	readBox.appendChild(read)
+
 	removeBox.appendChild(btnRemove)
-	pagesBox.appendChild(pagesBox)
+
 	
 	//input content
 	title.textContent = addBook.title
