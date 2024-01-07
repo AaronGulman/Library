@@ -63,7 +63,6 @@ li{
 	box-shadow: 2px 3px 20px rgba(0,0,0),
 	-2px -3px 20px rgba(0,0,0);
 	overflow: hidden;
-
 }
 button{
 	width:10%;
@@ -175,17 +174,22 @@ li:first-child:hover{
 }
 
 .pagesBox{
+	margin-left: 100px;
 	margin-top: 15px;
 	font-size: 10px;
-	width: 200px;
+	width: 100px;
 	height: 60px;
 	text-align: right;
+	border: 1px solid red;
+
 }
 
 .titleBox{
+	border: 1px solid red;
+	margin-left: 60px;
 	margin-top: 15px;
 	font-size: 10px;
-	width: 232px;
+	width: 167px;
 	height: 60px;
 	text-align: center;
 	background:transparent;
@@ -221,7 +225,6 @@ li:first-child:hover{
 	align-items: center;
 	text-align:center;
 	background-color: rgb(211, 211, 214);
-	z-index: 1;
 
 
 }
