@@ -82,11 +82,12 @@ function createBooks(){
 	let newBook = document.createElement('li')
 	unorderList.appendChild(newBook)
 
-	//li > h elements
+	//li > text elements
 	let title = document.createElement('h1');
 	let author = document.createElement('h2');
 	let pages = document.createElement('h2')
 	let read = document.createElement('h2')
+	let pageDisplay = document.createElement('p');
 
 
 	//li > divs 
@@ -95,10 +96,22 @@ function createBooks(){
 	let pagesBox = document.createElement('div')
 	let readBox = document.createElement('div')
 	let removeBox = document.createElement('div')
+	let bookmark = document.createElement('div')
+
+
+	//images
+	let plus = document.createElement('img')
+	plus.src ='./assets/plus.png'
+	let minus =document.createElement('img')
+	minus.src ='./assets/minus.png'
+
 
 
 	//li > buttons
 	let btnRemove = document.createElement('button')
+	let addPg = document.createElement('div')
+	let removePg = document.createElement('div')
+
 
 	//divs properties
 	titleBox.setAttribute('class','titleBox')
@@ -106,7 +119,15 @@ function createBooks(){
 	pagesBox.setAttribute('class','pagesBox')
 	readBox.setAttribute('class','readBox')
 	removeBox.setAttribute('class','removeBox')
+	bookmark.setAttribute('class','bookmark')
+	addPg.setAttribute('id','addPg')
+	removePg.setAttribute('id','removePg')
+	pageDisplay.setAttribute('id','pageDisplay')
 
+
+
+
+	pageDisplay.textContent = 'Last page: 3'	
 
 
 
@@ -115,18 +136,31 @@ function createBooks(){
 	btnRemove.setAttribute('type','remove')
 	btnRemove.textContent = 'REMOVE';
 	
+	
+
+	
 	// newBook appended elements
 	newBook.appendChild(titleBox);
 	newBook.appendChild(authorBox);
 	newBook.appendChild(pagesBox);
 	newBook.appendChild(readBox);
+	newBook.appendChild(bookmark)
 	newBook.appendChild(removeBox)
+
 
 	//appended to divs elements
 	titleBox.appendChild(title)
 	authorBox.appendChild(author)
 	pagesBox.appendChild(pages)
 	readBox.appendChild(read)
+	bookmark.appendChild(pageDisplay)
+	bookmark.appendChild(addPg)
+	bookmark.appendChild(pageDisplay)
+	bookmark.appendChild(removePg)
+	addPg.appendChild(plus)
+	removePg.appendChild(minus)
+	
+
 
 	removeBox.appendChild(btnRemove)
 
