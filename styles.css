@@ -199,3 +199,45 @@ li:first-child:hover{
 	height: 60px;
 	text-align: right;
 }
+
+.bookmark{
+	display: flex;
+	background:#000000 ;
+	height: 15px;
+	transform: rotate(90deg) translateX(-150px) translateY(80px);
+	justify-content: space-evenly;
+	align-items: center;
+	z-index: -1;
+
+}
+
+
+
+#addPg , #removePg{
+	display: flex;
+	width:12px;
+	height:15px;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+	background-color: rgb(211, 211, 214);
+	z-index: 1;
+
+
+}
+
+img{
+	width: 10px;
+	height: 10px;
+	transform: rotate(90deg);
+}
+
+#pageDisplay{
+	background:rgb(211, 211, 214) ;
+	z-index: 2;
+	width: 100px;
+	height: 100%;
+	color: #000000;
+	transform: rotate(180deg);
+	font-size: 10px;
+}
