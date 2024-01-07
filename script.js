@@ -6,11 +6,18 @@ let unorderList = document.querySelector('ul')
 
 
 addNewBook.addEventListener('click', ()=>{
+	let boxOfInputs = document.createElement('div')
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
 	let inputPages = document.createElement('input')
+	let submitBox = document.createElement('div')
 	let submit = document.createElement('button')
 	let inputWindow = document.createElement('div')
+	let inputHeader = document.createElement('inputHeader')
+	let cancel = document.createElement('img')
+	let resize = document.createElement('img')
+	let labelTitle = document.createElement('')
+
 	if(inputWindow){
 		//disable all elements when the inputWindow is true
 	}
@@ -23,26 +30,47 @@ addNewBook.addEventListener('click', ()=>{
 	inputWindow.setAttribute('id', 'inputWindow')
 	document.body.appendChild(inputWindow)
 
-	inputTitle.height = 200;
-	inputTitle.width = 200;
+	inputHeader.setAttribute('id','inputHeader')
+	inputWindow.appendChild(inputHeader)
+
+	boxOfInputs.setAttribute('id','boxOfInputs')
+	inputWindow.appendChild(boxOfInputs)
+
+
+
+	cancel.setAttribute('id','cancel')
+	cancel.src = './assets/plus.png'
+	inputHeader.appendChild(cancel);
+
+	resize.setAttribute('id','resize')
+	resize.src = './assets/arrow.png'
+	inputHeader.appendChild(resize)
+
+
 	inputTitle.setAttribute('id', 'inputTitle')
-	inputWindow.appendChild(inputTitle)
+	boxOfInputs.appendChild(inputTitle)
 
-	inputAuthor.height = 200;
-	inputAuthor.width = 200;
+
 	inputAuthor.setAttribute('id', 'inputAuthor')
-	inputWindow.appendChild(inputAuthor)
+	boxOfInputs.appendChild(inputAuthor)
 
-	inputPages.height = 200;
-	inputPages.width = 200;
+
 	inputPages.setAttribute('id', 'inputPages')
 	inputPages.setAttribute('type','number')
-	inputWindow.appendChild(inputPages)
+	boxOfInputs.appendChild(inputPages)
+
+	submitBox.setAttribute('id','submitBox')
+	inputWindow.appendChild(submitBox)
 
 	submit.setAttribute('id','submit')
 	submit.setAttribute('type','submit')
 	submit.textContent = 'SUBMIT'
-	inputWindow.appendChild(submit)
+	submitBox.appendChild(submit)
+
+
+
+
+	
 	
 	document.addEventListener('keydown', function(event){
 		if(event.key === 'Escape'){
@@ -87,7 +115,7 @@ function createBooks(){
 	let author = document.createElement('h2');
 	let pages = document.createElement('h2')
 	let read = document.createElement('h2')
-	let pageDisplay = document.createElement('p');
+	let pageDisplay = document.createElement('h2');
 
 
 
@@ -184,8 +212,6 @@ function createBooks(){
 		// for(let i = 0; i<3;i++){
 			if(increment < addBook.pages){
 			increment ++
-			} else{
-				alert('Exceeds the number of pages')
 			}
 
 			pageDisplay.textContent = `Last page: ${increment}`;
@@ -193,7 +219,9 @@ function createBooks(){
 	})
 
 	removePg.addEventListener('click',()=>{
+		if(increment > 0){
 		increment--
+		}
 		pageDisplay.textContent = `Last page: ${increment}`;
 	})
 }
@@ -207,3 +235,5 @@ function removeBook(){
 addBook.info()
 console.log(addBook.title)
 myLibrary.push(addBook)
+
+
