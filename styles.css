@@ -12,13 +12,18 @@ html{
 
 header{
 	display: flex;
-	justify-content: space-around;
+	padding: 0px 25px 0px 25px;
+	justify-content: space-between;
 	height: 10%;
 	align-items: center;
 	box-shadow: 2px 1px 10px #e5e7eb ;
 	margin-bottom: 50px;
 	
 
+}
+
+header > h1{
+	font-size: 35px;
 }
 
 #layout{
@@ -40,17 +45,16 @@ li:first-child{
 	display:inline-block;
 	background: rgb(176, 168, 168);
 	border-radius: 5px;
-	border: 1px solid red;
 	height: 350px;
 
 }
 
 
-li{
+li{	
 	display:flex;
 	flex-direction: column;
 	list-style-type: none;
-	background: linear-gradient(to right,rgb(214, 203, 203)93%,rgba(153, 151, 151) 94%,rgb(0, 0, 0) 95%,rgba(255,255,255)96%,rgb(0, 0, 0)97%,rgba(255,255,255)98%,rgb(0, 0, 0)99%,rgba(255,255,255)100%);
+	background: linear-gradient(to right,rgb(43, 43, 43)93%,rgba(153, 151, 151) 94%,rgb(0, 0, 0) 95%,rgba(255,255,255)96%,rgb(0, 0, 0)97%,rgba(255,255,255)98%,rgb(0, 0, 0)99%,rgba(255,255,255)100%);
 	border-radius: 10px 40px 30px 10px;
 	height: 350px;
 	width: 250px;
@@ -62,8 +66,8 @@ li{
 
 }
 button{
-	width:5%;
-	height:30%;
+	width:10%;
+	height:40%;
 	border: none;
 	padding: 2px;
 	border-radius: 3px;
@@ -167,17 +171,31 @@ li:first-child:hover{
 .removeBox{
 	width: 60%;
 	height: 10%;
-	transform: rotate(50deg) translateX(-5px) translateY(50px);
+	transform: rotate(50deg) translateX(5px) translateY(60px);
 }
 
 .pagesBox{
-
+	margin-top: 15px;
+	font-size: 10px;
+	width: 200px;
+	height: 60px;
+	text-align: right;
 }
 
 .titleBox{
-
+	margin-top: 15px;
+	font-size: 10px;
+	width: 232px;
+	height: 60px;
+	text-align: center;
+	background:transparent;
+	text-shadow: 0px 0px 10px;
 }
 
 .authorBox{
-	
+	margin-top: 15px;
+	font-size: 10px;
+	width: 200px;
+	height: 60px;
+	text-align: right;
 }
