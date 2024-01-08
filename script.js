@@ -56,10 +56,13 @@ addNewBook.addEventListener('click', ()=>{
 	boxOfInputs.appendChild(inputTitle)
 	
 	labelTitle.setAttribute('class','labelTitle')
+	labelTitle.setAttribute('for','inputTitle')
 	labelTitle.textContent = 'Title'
 	labelAuthor.setAttribute('class','labelAuthor')
+	labelAuthor.setAttribute('for','inputAuthor')
 	labelAuthor.textContent = 'Author'
 	labelPages.setAttribute('class','labelPages')
+	labelPages.setAttribute('for','inputPages')
 	labelPages.textContent = 'Pages'
 
 
@@ -82,9 +85,12 @@ addNewBook.addEventListener('click', ()=>{
 
 
 	inputTitle.addEventListener('focus', function() {
-		labelTitle.style.transform = 'translate(-85px, 2px)';
+		labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
 		labelTitle.style.transition = ' transform 1s';
-		labelTitle.style.color = 'blue'
+		labelTitle.style.color = 'rgb(17 24 39)'
+		labelTitle.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+		
+
 	      });
 
 	
@@ -93,6 +99,40 @@ addNewBook.addEventListener('click', ()=>{
 		labelTitle.style.transition = ' transform 1s';
 		labelTitle.style.transform = 'translate(-70px,35px)'
 		labelTitle.style.color = "#000000";
+		}
+	      });
+
+	      inputAuthor.addEventListener('focus', function() {
+		labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+		labelAuthor.style.transition = ' transform 1s';
+		labelAuthor.style.color = 'rgb(17 24 39)'
+		labelAuthor.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+
+	      });
+
+	
+	      inputAuthor.addEventListener('blur', function() {
+		if(!inputAuthor.value){
+			labelAuthor.style.transition = ' transform 1s';
+			labelAuthor.style.transform = 'translate(-70px,35px)'
+			labelAuthor.style.color = "#000000";
+		}
+	      });
+
+	      inputPages.addEventListener('focus', function() {
+		labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+		labelPages.style.transition = ' transform 1s';
+		labelPages.style.color = 'rgb(17 24 39)'
+		labelPages.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+
+	      });
+
+	
+	      inputPages.addEventListener('blur', function() {
+		if(!inputPages.value){
+			labelPages.style.transition = ' transform 1s';
+			labelPages.style.transform = 'translate(-70px,35px)'
+			labelPages.style.color = "#000000";
 		}
 	      });
 
