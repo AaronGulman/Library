@@ -294,3 +294,11 @@ label{
 	pointer-events: none;
 	user-select: none;
 }
+
+input::placeholder{
+	color:red;
+}
+
+input{
+	color: black;
+}
