@@ -10,13 +10,18 @@ addNewBook.addEventListener('click', ()=>{
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
 	let inputPages = document.createElement('input')
+	let input = document.createElement('input')
 	let submitBox = document.createElement('div')
 	let submit = document.createElement('button')
 	let inputWindow = document.createElement('div')
 	let inputHeader = document.createElement('inputHeader')
 	let cancel = document.createElement('img')
 	let resize = document.createElement('img')
-	let labelTitle = document.createElement('')
+	let labelTitle = document.createElement('label')
+	let labelAuthor= document.createElement('label')
+	let labelPages = document.createElement('label')
+
+
 
 	if(inputWindow){
 		//disable all elements when the inputWindow is true
@@ -46,15 +51,23 @@ addNewBook.addEventListener('click', ()=>{
 	resize.src = './assets/arrow.png'
 	inputHeader.appendChild(resize)
 
-
+	boxOfInputs.appendChild(labelTitle)
 	inputTitle.setAttribute('id', 'inputTitle')
 	boxOfInputs.appendChild(inputTitle)
+	
+	labelTitle.setAttribute('class','labelTitle')
+	labelTitle.textContent = 'Title'
+	labelAuthor.setAttribute('class','labelAuthor')
+	labelAuthor.textContent = 'Author'
+	labelPages.setAttribute('class','labelPages')
+	labelPages.textContent = 'Pages'
 
 
+	boxOfInputs.appendChild(labelAuthor)
 	inputAuthor.setAttribute('id', 'inputAuthor')
 	boxOfInputs.appendChild(inputAuthor)
 
-
+	boxOfInputs.appendChild(labelPages)
 	inputPages.setAttribute('id', 'inputPages')
 	inputPages.setAttribute('type','number')
 	boxOfInputs.appendChild(inputPages)
@@ -68,7 +81,20 @@ addNewBook.addEventListener('click', ()=>{
 	submitBox.appendChild(submit)
 
 
+	inputTitle.addEventListener('focus', function() {
+		labelTitle.style.transform = 'translate(-85px, 2px)';
+		labelTitle.style.transition = ' transform 1s';
+		labelTitle.style.color = 'blue'
+	      });
 
+	
+	      inputTitle.addEventListener('blur', function() {
+		if(!inputTitle.value){
+		labelTitle.style.transition = ' transform 1s';
+		labelTitle.style.transform = 'translate(-70px,35px)'
+		labelTitle.style.color = "#000000";
+		}
+	      });
 
 	
 	
