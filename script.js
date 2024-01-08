@@ -8,6 +8,8 @@ let body = document.body;
 
 addNewBook.addEventListener('click', ()=>{
 	body.classList.add('webBlurred')
+	
+	//created elements on click
 	let boxOfInputs = document.createElement('div')
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
@@ -26,6 +28,8 @@ addNewBook.addEventListener('click', ()=>{
 	
 
 	console.log('Clicked')
+
+	//styling properties of elements
 
 	inputWindow.height = 400;
 	inputWindow.width = 400;
@@ -50,6 +54,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	boxOfInputs.appendChild(labelTitle)
 	inputTitle.setAttribute('id', 'inputTitle')
+	inputTitle.required = true;
 	boxOfInputs.appendChild(inputTitle)
 	
 	labelTitle.setAttribute('class','labelTitle')
@@ -66,11 +71,13 @@ addNewBook.addEventListener('click', ()=>{
 	boxOfInputs.appendChild(labelAuthor)
 	inputAuthor.setAttribute('id', 'inputAuthor')
 	boxOfInputs.appendChild(inputAuthor)
+	inputAuthor.required = true;
 
 	boxOfInputs.appendChild(labelPages)
 	inputPages.setAttribute('id', 'inputPages')
 	inputPages.setAttribute('type','number')
 	boxOfInputs.appendChild(inputPages)
+	inputPages.required = true;
 
 	submitBox.setAttribute('id','submitBox')
 	inputWindow.appendChild(submitBox)
@@ -81,6 +88,8 @@ addNewBook.addEventListener('click', ()=>{
 	submitBox.appendChild(submit)
 
 
+
+	//eventListeners
 	inputTitle.addEventListener('focus', function() {
 		labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
 		labelTitle.style.transition = ' transform 1s';
@@ -92,7 +101,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	
 	      inputTitle.addEventListener('blur', function() {
-		if(!inputTitle.value){
+		if(!inputTitle.checkValidity){
 		labelTitle.style.transition = ' transform 1s';
 		labelTitle.style.transform = 'translate(-70px,35px)'
 		labelTitle.style.color = "#000000";
@@ -109,7 +118,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	
 	      inputAuthor.addEventListener('blur', function() {
-		if(!inputAuthor.value){
+		if(!inputAuthor.checkValidity){
 			labelAuthor.style.transition = ' transform 1s';
 			labelAuthor.style.transform = 'translate(-70px,35px)'
 			labelAuthor.style.color = "#000000";
@@ -126,7 +135,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	
 	      inputPages.addEventListener('blur', function() {
-		if(!inputPages.value){
+		if(!inputPages.checkValidity){
 			labelPages.style.transition = ' transform 1s';
 			labelPages.style.transform = 'translate(-70px,35px)'
 			labelPages.style.color = "#000000";
@@ -138,6 +147,8 @@ addNewBook.addEventListener('click', ()=>{
 	document.addEventListener('keydown', function(event){
 		if(event.key === 'Escape'){
 			inputWindow.remove()
+			body.classList.remove('webBlurred')
+
 		}
 	})
 
@@ -145,15 +156,76 @@ addNewBook.addEventListener('click', ()=>{
 		if(!inputWindow.contains(event.target) ){
 			console.log('Click event');
 			inputWindow.remove()
-			
+			body.classList.remove('webBlurred')
+
 		}
 	})
 
-	submit.addEventListener('click',() =>{
-		createBooks()
-		inputWindow.remove()
-		body.classList.remove('webBlurred')
-	})
+	submit.addEventListener('click', submitClickHandler)
+
+
+	document.addEventListener('keydown',keyDownHandler)
+
+	function submitClickHandler(){
+
+		let isValid = true;
+			
+		if(!inputTitle.checkValidity()){
+			inputTitle.setAttribute('placeholder','Title required!')
+			inputTitle.style.color = 'red';
+			labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
+			isValid=false;
+		 } else{ 
+			inputTitle.removeAttribute('placeholder')
+			inputTitle.style.color = 'rgb(17 24 39)';
+			labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
+			
+			}
+
+			if(!inputAuthor.checkValidity()){
+				inputAuthor.setAttribute('placeholder','Author required!')
+				inputAuthor.style.color = 'red';
+				labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+				isValid=false;
+			}else{
+				inputAuthor.removeAttribute('placeholder')
+				inputAuthor.style.color = 'rgb(17 24 39)';
+				labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+
+
+			}if(!inputPages.checkValidity()){
+					inputPages.setAttribute('placeholder','Choose between 0 - 9999999 pages')
+					inputPages.style.color = 'red';
+					labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+					isValid=false;
+
+				}else{
+					inputPages.removeAttribute('placeholder')
+					inputPages.style.color = 'rgb(17 24 39)';
+					labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+				}
+			
+				if(isValid){
+					createBooks()
+					inputWindow.remove()
+					body.classList.remove('webBlurred')
+					removeListeners()
+				}
+		}
+
+	function keyDownHandler(event){
+		if(event.key === 'Enter' && inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity()){
+			createBooks()
+			inputWindow.remove()
+			body.classList.remove('webBlurred')
+			removeListeners()
+			}
+	}
+
+	function removeListeners(){
+		submit.removeEventListener('click',submitClickHandler)
+		document.removeEventListener('keydown',keyDownHandler)
+	}
 
 })
 
@@ -251,9 +323,6 @@ function createBooks(){
 	bookmark.appendChild(removePg)
 	addPg.appendChild(plus)
 	removePg.appendChild(minus)
-	
-
-
 	removeBox.appendChild(btnRemove)
 
 	
