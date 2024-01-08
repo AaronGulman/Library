@@ -1,11 +1,13 @@
 const myLibrary = [];
 let addNewBook = document.getElementById('plusDiv')
 let unorderList = document.querySelector('ul')
+let body = document.body;
 
 
 
 
 addNewBook.addEventListener('click', ()=>{
+	body.classList.add('webBlurred')
 	let boxOfInputs = document.createElement('div')
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
@@ -21,11 +23,6 @@ addNewBook.addEventListener('click', ()=>{
 	let labelAuthor= document.createElement('label')
 	let labelPages = document.createElement('label')
 
-
-
-	if(inputWindow){
-		//disable all elements when the inputWindow is true
-	}
 	
 
 	console.log('Clicked')
@@ -155,6 +152,7 @@ addNewBook.addEventListener('click', ()=>{
 	submit.addEventListener('click',() =>{
 		createBooks()
 		inputWindow.remove()
+		body.classList.remove('webBlurred')
 	})
 
 })
