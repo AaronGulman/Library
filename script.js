@@ -177,15 +177,34 @@ addNewBook.addEventListener('click', ()=>{
 		body.classList.remove('webBlurred')
 	})
 
-	resize.addEventListener('click',()=>{
+	function resizeWindow(){
+		submit.setAttribute('class','bigBtn')
 		inputWindow.style.height = "700px";
 		inputWindow.style.width = "500px";
 		inputWindow.style.top = '10%'
 		inputWindow.style.left = '37%'
 		inputWindow.style.fontSize = '30px'
 		submit.style.fontSize = '30px'
+		
+	}
 
+	function cancelResize(){
+		inputWindow.removeAttribute('class','scaleUp')
+
+	}
+
+	resize.addEventListener('click',()=>{
+		
+		inputWindow.setAttribute('class','scaleUp')
+		resizeWindow()
+		resize.addEventListener('click',()=>{
+			cancelResize()
+		})
 	})
+
+	
+
+
 
 	submit.addEventListener('click', submitClickHandler)
 
@@ -304,6 +323,7 @@ function createBooks(){
 	let readBox = document.createElement('div')
 	let removeBox = document.createElement('div')
 	let bookmark = document.createElement('div')
+	
 
 
 	//images
@@ -359,7 +379,18 @@ function createBooks(){
 	titleBox.appendChild(title)
 	authorBox.appendChild(author)
 	pagesBox.appendChild(pages)
+
+
+	let readDone = document.createElement('div')
+	readDone.setAttribute('id','readDone')
+	readBox.appendChild(readDone)
+	
 	readBox.appendChild(read)
+
+	let readNotYet = document.createElement('div')
+	readNotYet.setAttribute('id','readNotYet')
+	readBox.appendChild(readNotYet)
+
 	bookmark.appendChild(addPg)
 	bookmark.appendChild(pageDisplay)
 	bookmark.appendChild(removePg)
@@ -372,10 +403,28 @@ function createBooks(){
 	title.textContent = addBook.title
 	author.textContent = addBook.author
 	pages.textContent = addBook.pages
-	read = addBook.read
+	read.textContent = addBook.read
+
+
 
 	myLibrary.push(newBook)
 	console.log(myLibrary)
+
+	readDone.addEventListener('click', bookRead)
+
+	function bookRead(){
+		addBook.read =  true;
+		read.textContent = 'Read';
+		readDone.style.background = 'rgba(0,255,0)'
+	}
+
+	readNotYet.addEventListener('click', bookNotRead)
+
+	function bookNotRead(){
+		addBook.read =  false;
+		read.textContent = 'Not read';
+		readNotYet.style.background = 'rgba(255,0,0)'
+	}
 
 		
 	btnRemove.addEventListener('click',()=>{
