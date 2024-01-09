@@ -34,6 +34,7 @@ addNewBook.addEventListener('click', ()=>{
 				let lineDiv = document.createElement('div')
 				lineDiv.setAttribute('class','line')
 				lineBox.appendChild(lineDiv)
+				
 
 			}
 	console.log('Clicked')
@@ -99,7 +100,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	//eventListeners
 	inputTitle.addEventListener('focus', function() {
-		labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
+		labelTitle.style.transform = 'translate(0%, 0%) scale(1.2)';
 		labelTitle.style.transition = ' transform 1s';
 		labelTitle.style.color = 'rgb(17 24 39)'
 		labelTitle.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -111,13 +112,13 @@ addNewBook.addEventListener('click', ()=>{
 	      inputTitle.addEventListener('blur', function() {
 		if(!inputTitle.checkValidity){
 		labelTitle.style.transition = ' transform 1s';
-		labelTitle.style.transform = 'translate(-150%,0%)'
+		labelTitle.style.transform = 'translate(0%,0%)'
 		labelTitle.style.color = "#000000";
 		}
 	      });
 
 	      inputAuthor.addEventListener('focus', function() {
-		labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
+		labelAuthor.style.transform = 'translate(0%, 0%) scale(1.2)';
 		labelAuthor.style.transition = ' transform 1s';
 		labelAuthor.style.color = 'rgb(17 24 39)'
 		labelAuthor.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -128,13 +129,13 @@ addNewBook.addEventListener('click', ()=>{
 	      inputAuthor.addEventListener('blur', function() {
 		if(!inputAuthor.checkValidity){
 			labelAuthor.style.transition = ' transform 1s';
-			labelAuthor.style.transform = 'translate(-150%,0%)'
+			labelAuthor.style.transform = 'translate(0%,0%)'
 			labelAuthor.style.color = "#000000";
 		}
 	      });
 
 	      inputPages.addEventListener('focus', function() {
-		labelPages.style.transform = 'translate(-150%, 0%) scale(1.2)';
+		labelPages.style.transform = 'translate(0%, 0%) scale(1.2)';
 		labelPages.style.transition = ' transform 1s';
 		labelPages.style.color = 'rgb(17 24 39)'
 		labelPages.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -181,6 +182,10 @@ addNewBook.addEventListener('click', ()=>{
 		inputWindow.style.left = '37%'
 		inputWindow.style.fontSize = '30px'
 		submit.style.fontSize = '30px'
+		labelTitle.style.transform = 'translate(50%,160%)'
+		labelAuthor.style.transform = 'translate(50%,160%)'
+		labelPages.style.transform = 'translate(50%,160%)'
+
 
 
 
@@ -198,36 +203,36 @@ addNewBook.addEventListener('click', ()=>{
 		if(!inputTitle.checkValidity()){
 			inputTitle.setAttribute('placeholder','Title required!')
 			inputTitle.style.color = 'red';
-			labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
+			labelTitle.style.transform = 'translate(0%, 0%) scale(1.2)';
 			isValid=false;
 		 } else{ 
 			inputTitle.removeAttribute('placeholder')
 			inputTitle.style.color = 'rgb(17 24 39)';
-			labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
+			labelTitle.style.transform = 'translate(0%, 0%) scale(1.2)';
 			
 			}
 
 			if(!inputAuthor.checkValidity()){
 				inputAuthor.setAttribute('placeholder','Author required!')
 				inputAuthor.style.color = 'red';
-				labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
+				labelAuthor.style.transform = 'translate(0%, 0%) scale(1.2)';
 				isValid=false;
 			}else{
 				inputAuthor.removeAttribute('placeholder')
 				inputAuthor.style.color = 'rgb(17 24 39)';
-				labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
+				labelAuthor.style.transform = 'translate(0%, 0%) scale(1.2)';
 
 
 			}if(!inputPages.checkValidity()){
 					inputPages.setAttribute('placeholder','Choose between 0 - 9999999 pages')
 					inputPages.style.color = 'red';
-					labelPages.style.transform = 'translate(-150%, 0px) scale(1.2)';
+					labelPages.style.transform = 'translate(0%, 0%) scale(1.2)';
 					isValid=false;
 
 				}else{
 					inputPages.removeAttribute('placeholder')
 					inputPages.style.color = 'rgb(17 24 39)';
-					labelPages.style.transform = 'translate(-150%, 0px) scale(1.2)';
+					labelPages.style.transform = 'translate(0%, 0%) scale(1.2)';
 				}
 			
 				if(isValid){
