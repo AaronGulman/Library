@@ -6,11 +6,13 @@ let body = document.body;
 
 
 
+
 addNewBook.addEventListener('click', ()=>{
 	body.classList.add('webBlurred')
 	
 	//created elements on click
 	let boxOfInputs = document.createElement('div')
+	let lineBox = document.createElement('div')
 	let inputTitle = document.createElement('input')
 	let inputAuthor = document.createElement('input')
 	let inputPages = document.createElement('input')
@@ -18,7 +20,7 @@ addNewBook.addEventListener('click', ()=>{
 	let submitBox = document.createElement('div')
 	let submit = document.createElement('button')
 	let inputWindow = document.createElement('div')
-	let inputHeader = document.createElement('inputHeader')
+	let inputHeader = document.createElement('div')
 	let cancel = document.createElement('img')
 	let resize = document.createElement('img')
 	let labelTitle = document.createElement('label')
@@ -26,15 +28,22 @@ addNewBook.addEventListener('click', ()=>{
 	let labelPages = document.createElement('label')
 
 	
+	lineBox.setAttribute('id','lineBox')
+	inputWindow.appendChild(lineBox)
+			for(let i=0;i<4;i++){
+				let lineDiv = document.createElement('div')
+				lineDiv.setAttribute('class','line')
+				lineBox.appendChild(lineDiv)
 
+			}
 	console.log('Clicked')
 
 	//styling properties of elements
 
-	inputWindow.height = 400;
-	inputWindow.width = 400;
+
 	inputWindow.setAttribute('id', 'inputWindow')
 	document.body.appendChild(inputWindow)
+	inputWindow.style.transform = 'scale(1)'; 
 
 	inputHeader.setAttribute('id','inputHeader')
 	inputWindow.appendChild(inputHeader)
@@ -67,7 +76,6 @@ addNewBook.addEventListener('click', ()=>{
 	labelPages.setAttribute('for','inputPages')
 	labelPages.textContent = 'Pages'
 
-
 	boxOfInputs.appendChild(labelAuthor)
 	inputAuthor.setAttribute('id', 'inputAuthor')
 	boxOfInputs.appendChild(inputAuthor)
@@ -91,7 +99,7 @@ addNewBook.addEventListener('click', ()=>{
 
 	//eventListeners
 	inputTitle.addEventListener('focus', function() {
-		labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
+		labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
 		labelTitle.style.transition = ' transform 1s';
 		labelTitle.style.color = 'rgb(17 24 39)'
 		labelTitle.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -103,13 +111,13 @@ addNewBook.addEventListener('click', ()=>{
 	      inputTitle.addEventListener('blur', function() {
 		if(!inputTitle.checkValidity){
 		labelTitle.style.transition = ' transform 1s';
-		labelTitle.style.transform = 'translate(-70px,35px)'
+		labelTitle.style.transform = 'translate(-150%,0%)'
 		labelTitle.style.color = "#000000";
 		}
 	      });
 
 	      inputAuthor.addEventListener('focus', function() {
-		labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+		labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
 		labelAuthor.style.transition = ' transform 1s';
 		labelAuthor.style.color = 'rgb(17 24 39)'
 		labelAuthor.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -120,13 +128,13 @@ addNewBook.addEventListener('click', ()=>{
 	      inputAuthor.addEventListener('blur', function() {
 		if(!inputAuthor.checkValidity){
 			labelAuthor.style.transition = ' transform 1s';
-			labelAuthor.style.transform = 'translate(-70px,35px)'
+			labelAuthor.style.transform = 'translate(-150%,0%)'
 			labelAuthor.style.color = "#000000";
 		}
 	      });
 
 	      inputPages.addEventListener('focus', function() {
-		labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+		labelPages.style.transform = 'translate(-150%, 0%) scale(1.2)';
 		labelPages.style.transition = ' transform 1s';
 		labelPages.style.color = 'rgb(17 24 39)'
 		labelPages.style.textShadow = '1px 2px 10px rgb(17 24 39)'
@@ -137,7 +145,7 @@ addNewBook.addEventListener('click', ()=>{
 	      inputPages.addEventListener('blur', function() {
 		if(!inputPages.checkValidity){
 			labelPages.style.transition = ' transform 1s';
-			labelPages.style.transform = 'translate(-70px,35px)'
+			labelPages.style.transform = 'translate(-150%,0%)'
 			labelPages.style.color = "#000000";
 		}
 	      });
@@ -161,6 +169,23 @@ addNewBook.addEventListener('click', ()=>{
 		}
 	})
 
+	cancel.addEventListener('click',()=>{
+		inputWindow.remove()
+		body.classList.remove('webBlurred')
+	})
+
+	resize.addEventListener('click',()=>{
+		inputWindow.style.height = "700px";
+		inputWindow.style.width = "500px";
+		inputWindow.style.top = '10%'
+		inputWindow.style.left = '37%'
+		inputWindow.style.fontSize = '30px'
+		submit.style.fontSize = '30px'
+
+
+
+	})
+
 	submit.addEventListener('click', submitClickHandler)
 
 
@@ -173,36 +198,36 @@ addNewBook.addEventListener('click', ()=>{
 		if(!inputTitle.checkValidity()){
 			inputTitle.setAttribute('placeholder','Title required!')
 			inputTitle.style.color = 'red';
-			labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
+			labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
 			isValid=false;
 		 } else{ 
 			inputTitle.removeAttribute('placeholder')
 			inputTitle.style.color = 'rgb(17 24 39)';
-			labelTitle.style.transform = 'translate(-70px, 0px) scale(1.2)';
+			labelTitle.style.transform = 'translate(-150%, 0%) scale(1.2)';
 			
 			}
 
 			if(!inputAuthor.checkValidity()){
 				inputAuthor.setAttribute('placeholder','Author required!')
 				inputAuthor.style.color = 'red';
-				labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+				labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
 				isValid=false;
 			}else{
 				inputAuthor.removeAttribute('placeholder')
 				inputAuthor.style.color = 'rgb(17 24 39)';
-				labelAuthor.style.transform = 'translate(-70px, 0px) scale(1.2)';
+				labelAuthor.style.transform = 'translate(-150%, 0%) scale(1.2)';
 
 
 			}if(!inputPages.checkValidity()){
 					inputPages.setAttribute('placeholder','Choose between 0 - 9999999 pages')
 					inputPages.style.color = 'red';
-					labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+					labelPages.style.transform = 'translate(-150%, 0px) scale(1.2)';
 					isValid=false;
 
 				}else{
 					inputPages.removeAttribute('placeholder')
 					inputPages.style.color = 'rgb(17 24 39)';
-					labelPages.style.transform = 'translate(-70px, 0px) scale(1.2)';
+					labelPages.style.transform = 'translate(-150%, 0px) scale(1.2)';
 				}
 			
 				if(isValid){
@@ -212,6 +237,7 @@ addNewBook.addEventListener('click', ()=>{
 					removeListeners()
 				}
 		}
+
 
 	function keyDownHandler(event){
 		if(event.key === 'Enter' && inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity()){
