@@ -185,17 +185,6 @@ addNewBook.addEventListener('click', ()=>{
 		inputWindow.style.fontSize = '30px'
 		submit.style.fontSize = '30px'
 
-		function checkIfEmpty(){
-			if(!inputTitle && !inputAuthor && !inputPages){
-			labelTitle.style.transform = 'translate(50%,150%)'
-			labelAuthor.style.transform = 'translate(50%,150%)'
-			labelPages.style.transform = 'translate(50%,150%)'
-			}
-			
-	
-		}
-		checkIfEmpty()
-
 	})
 
 	submit.addEventListener('click', submitClickHandler)
@@ -269,11 +258,9 @@ addNewBook.addEventListener('click', ()=>{
 
 
 	function keyDownHandler(event){
-		if(event.key === 'Enter' && inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity()){
-			createBooks()
-			inputWindow.remove()
-			body.classList.remove('webBlurred')
-			removeListeners()
+		if(event.key === 'Enter'){
+			submitClickHandler()
+			
 			}
 	}
 
