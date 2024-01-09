@@ -109,13 +109,15 @@ addNewBook.addEventListener('click', ()=>{
 	      });
 
 	
-	      inputTitle.addEventListener('blur', function() {
+	      inputTitle.addEventListener('blur', blurredTitle)
+	    
+	      function blurredTitle(){
 		if(!inputTitle.checkValidity){
 		labelTitle.style.transition = ' transform 1s';
 		labelTitle.style.transform = 'translate(0%,0%)'
 		labelTitle.style.color = "#000000";
 		}
-	      });
+	      };
 
 	      inputAuthor.addEventListener('focus', function() {
 		labelAuthor.style.transform = 'translate(0%, 0%) scale(1.2)';
@@ -182,12 +184,17 @@ addNewBook.addEventListener('click', ()=>{
 		inputWindow.style.left = '37%'
 		inputWindow.style.fontSize = '30px'
 		submit.style.fontSize = '30px'
-		labelTitle.style.transform = 'translate(50%,160%)'
-		labelAuthor.style.transform = 'translate(50%,160%)'
-		labelPages.style.transform = 'translate(50%,160%)'
 
-
-
+		function checkIfEmpty(){
+			if(!inputTitle && !inputAuthor && !inputPages){
+			labelTitle.style.transform = 'translate(50%,150%)'
+			labelAuthor.style.transform = 'translate(50%,150%)'
+			labelPages.style.transform = 'translate(50%,150%)'
+			}
+			
+	
+		}
+		checkIfEmpty()
 
 	})
 
@@ -195,6 +202,7 @@ addNewBook.addEventListener('click', ()=>{
 
 
 	document.addEventListener('keydown',keyDownHandler)
+	
 
 	function submitClickHandler(){
 
@@ -203,19 +211,30 @@ addNewBook.addEventListener('click', ()=>{
 		if(!inputTitle.checkValidity()){
 			inputTitle.setAttribute('placeholder','Title required!')
 			inputTitle.style.color = 'red';
+			labelTitle.style.color = 'rgb(17 24 39)'
 			labelTitle.style.transform = 'translate(0%, 0%) scale(1.2)';
+			labelTitle.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+			// labelTitle.style.transition = ' transform 1s';	
+	
+		
 			isValid=false;
 		 } else{ 
 			inputTitle.removeAttribute('placeholder')
 			inputTitle.style.color = 'rgb(17 24 39)';
 			labelTitle.style.transform = 'translate(0%, 0%) scale(1.2)';
 			
+			
 			}
 
 			if(!inputAuthor.checkValidity()){
 				inputAuthor.setAttribute('placeholder','Author required!')
 				inputAuthor.style.color = 'red';
+				labelAuthor.style.color = 'rgb(17 24 39)'
 				labelAuthor.style.transform = 'translate(0%, 0%) scale(1.2)';
+				labelAuthor.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+				// labelAuthor.style.transition = ' transform 1s';
+
+
 				isValid=false;
 			}else{
 				inputAuthor.removeAttribute('placeholder')
@@ -226,7 +245,12 @@ addNewBook.addEventListener('click', ()=>{
 			}if(!inputPages.checkValidity()){
 					inputPages.setAttribute('placeholder','Choose between 0 - 9999999 pages')
 					inputPages.style.color = 'red';
+					labelPages.style.color = 'rgb(17 24 39)'
 					labelPages.style.transform = 'translate(0%, 0%) scale(1.2)';
+					labelPages.style.textShadow = '1px 2px 10px rgb(17 24 39)'
+					// labelPages.style.transition = ' transform 1s';
+
+
 					isValid=false;
 
 				}else{
