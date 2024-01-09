@@ -81,10 +81,10 @@ button:hover{
 #inputWindow{
 	display: flex;
 	background-color: rgb(211, 211, 214);
-	height: 40%;
-	width: 15%;
-	top: 35%;
-	right: 40%;
+	height: 400px;
+	width: 270px;
+	top: 10%;
+	left: 42.5%;
 	color: white;
 	position: fixed;
 	z-index: 2;
@@ -233,60 +233,65 @@ img{
 	align-items: center;
 }
 
-#cancel {
-	display: flex;
-	width:20px;
-	height:20px;
-	background: linear-gradient(to right,rgba(255, 0, 0),rgb(144, 12, 12));
-	transform: rotate(45deg);
-	border-radius: 100px 100px 100px 100px;
-
-}
-
+#cancel, 
 #resize{
 	display: flex;
 	width:20px;
 	height:20px;
-	background:linear-gradient(to right, rgb(15, 204, 78), rgb(19, 121, 53));
 	border-radius: 100px 100px 100px 100px;
+
+}
+
+#cancel{
+	background: linear-gradient(to right,rgba(255, 0, 0),rgb(144, 12, 12));
+	transform: rotate(45deg);
+}
+
+#resize{
+	background:linear-gradient(to right, rgb(15, 204, 78), rgb(19, 121, 53));
 }
 
 #inputHeader{
 	display: flex;
 	width: 100%;
 	height: 2%;
-	justify-content:left;
+	justify-content:space-between;
 	
 }
 
 #boxOfInputs{
 	display: flex;
-	background-color: rgb(211, 211, 214);
 	height: 80%;
+	max-width: 100%;
 	color: white;
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
 	gap: 10px;
+	z-index: 1;
 
 }
 
 #boxOfInputs input{
 	width:70%;
 	height:10%;
+
 }
 
 #submitBox{
 	display: flex;
 	height: 20%;
 	width: 100%;
+	z-index: 1;
 }
 
 
 label{
 	color: #000000;
-	transform: translate(-70px,35px);
-	min-width: 48px;
+	transform: translate(0%,0%);
+	width:50%;
+	max-width: 20%;
+	
 }
 
 .webBlurred > *:not(#inputWindow){
@@ -301,4 +306,22 @@ input::placeholder{
 
 input{
 	color: black;
+}
+
+.line{
+	
+	border:1px solid black;
+	width:5%;
+	height: 2%;
+	background-color: black;
+}
+
+#lineBox{
+	display: flex;
+	justify-content: space-evenly;
+	border: 1px solid red;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
 }
