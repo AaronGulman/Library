@@ -436,8 +436,9 @@ function createBooks(){
 
 	addPg.addEventListener('click',()=>{
 		// for(let i = 0; i<3;i++){
-			if(increment < addBook.pages){
 			increment ++
+
+			if(increment < addBook.pages){
 			}else{
 				(increment === addBook.pages)
 
