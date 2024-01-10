@@ -155,6 +155,15 @@ li:first-child:hover{
 	width: 100%;
 }
 
+#plusDiv:hover{
+	transform: scale(1.2) rotate(360deg) rotateZ(360deg) ;
+	transition: transform 1s;
+}
+
+#hardcodedList:hover{
+	transform: scale(1.1);
+}
+
 .removeBox{
 	width: 60%;
 	height: 10%;
@@ -364,4 +373,8 @@ font-size: 30px;
 	transform:translate(-310%);
 	z-index:-1;
 
+}
+
+#newBook:hover{
+	box-shadow: 2px 2px 10px rgba(255,255,255);
 }
