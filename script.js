@@ -295,7 +295,7 @@ function Book(title,author,pages,read){
 	this.title = title,
 	this.author = author,
 	this.pages = pages,
-	this.read = read ? 'read' : 'not read yet' 
+	this.read = read || 'Not read'
 
 	this.info = function(){
 		console.log(`${this.title},${this.author},${this.pages},${this.read}`)
@@ -321,6 +321,7 @@ function createBooks(){
 	let authorBox = document.createElement('div')
 	let pagesBox = document.createElement('div')
 	let readBox = document.createElement('div')
+	let readLine = document.createElement('div')
 	let removeBox = document.createElement('div')
 	let bookmark = document.createElement('div')
 	
@@ -350,7 +351,7 @@ function createBooks(){
 	addPg.setAttribute('id','addPg')
 	removePg.setAttribute('id','removePg')
 	pageDisplay.setAttribute('id','pageDisplay')
-
+	readLine.setAttribute('id','readLine')
 
 
 
@@ -384,12 +385,11 @@ function createBooks(){
 	let readDone = document.createElement('div')
 	readDone.setAttribute('id','readDone')
 	readBox.appendChild(readDone)
-	
+	readBox.appendChild(readLine)
 	readBox.appendChild(read)
 
-	let readNotYet = document.createElement('div')
-	readNotYet.setAttribute('id','readNotYet')
-	readBox.appendChild(readNotYet)
+
+
 
 	bookmark.appendChild(addPg)
 	bookmark.appendChild(pageDisplay)
@@ -410,21 +410,6 @@ function createBooks(){
 	myLibrary.push(newBook)
 	console.log(myLibrary)
 
-	readDone.addEventListener('click', bookRead)
-
-	function bookRead(){
-		addBook.read =  true;
-		read.textContent = 'Read';
-		readDone.style.background = 'rgba(0,255,0)'
-	}
-
-	readNotYet.addEventListener('click', bookNotRead)
-
-	function bookNotRead(){
-		addBook.read =  false;
-		read.textContent = 'Not read';
-		readNotYet.style.background = 'rgba(255,0,0)'
-	}
 
 		
 	btnRemove.addEventListener('click',()=>{
@@ -432,10 +417,20 @@ function createBooks(){
 	})
 	let increment = 0;
 
-	addPg.addEventListener('click',(event)=>{
+	addPg.addEventListener('click',()=>{
 		// for(let i = 0; i<3;i++){
 			if(increment < addBook.pages){
 			increment ++
+			}else{
+				(increment === addBook.pages)
+
+				read.textContent = 'Read';
+				readDone.style.background = 'rgba(0,255,0)';
+				pageDisplay.textContent = `Last page: ${addBook.pages}`;
+				increment = addBook.pages;
+				console.log(addBook);
+				
+			
 			}
 
 			pageDisplay.textContent = `Last page: ${increment}`;
@@ -448,7 +443,37 @@ function createBooks(){
 		}
 		pageDisplay.textContent = `Last page: ${increment}`;
 	})
+
+		readDone.addEventListener('click', ()=>{
+			bookRead()
+			incrementUpDown()
+		})
+		addBook.read = false;
+
+function bookRead() {
+
+addBook.read = !addBook.read; 
+    switch(addBook.read){
+	case true:
+		read.textContent = 'Read';
+		readDone.style.background = 'rgba(0,255,0)';
+		pageDisplay.textContent = `Last page: ${addBook.pages}`;
+		increment = addBook.pages;
+		console.log(addBook);
+		break;
+	
+	case false:
+		read.textContent = 'Not read';
+		readDone.style.background = 'rgba(255,0,0)';
+		increment = 0;
+		pageDisplay.textContent = `Last page: ${increment}`;
+		console.log(addBook);
+		break;
+   		 }
+	}
+ 
 }
+
 
 
 function removeBook(){
