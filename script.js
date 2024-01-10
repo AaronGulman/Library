@@ -319,6 +319,7 @@ function createBooks(){
 	let addBook = new Book(inputTitle.value,inputAuthor.value,inputPages.value,false);
 	let newBook = document.createElement('li')
 	unorderList.appendChild(newBook)
+	 myLibrary.push(newBook);
 
 	//li > text elements
 	let title = document.createElement('h1');
