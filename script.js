@@ -356,6 +356,7 @@ function createBooks(){
 
 
 	//divs properties
+	newBook.setAttribute('id','newBook')
 	titleBox.setAttribute('class','titleBox')
 	authorBox.setAttribute('class','authorBox')
 	pagesBox.setAttribute('class','pagesBox')
@@ -376,6 +377,7 @@ function createBooks(){
 	//btn properties
 	btnRemove.setAttribute('id','remove')
 	btnRemove.setAttribute('type','remove')
+	btnRemove.setAttribute('tabindex','-1')
 	btnRemove.textContent = 'REMOVE';
 	
 	
@@ -428,6 +430,7 @@ function createBooks(){
 		
 	btnRemove.addEventListener('click',()=>{
 		newBook.remove()
+		myLibrary.pop(newBook)
 	})
 	let increment = 0;
 
