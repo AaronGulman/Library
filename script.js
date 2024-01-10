@@ -177,8 +177,9 @@ addNewBook.addEventListener('click', ()=>{
 		body.classList.remove('webBlurred')
 	})
 
+	let resizeTrue = false;
+
 	function resizeWindow(){
-		submit.setAttribute('class','bigBtn')
 		inputWindow.style.height = "700px";
 		inputWindow.style.width = "500px";
 		inputWindow.style.top = '10%'
@@ -188,18 +189,30 @@ addNewBook.addEventListener('click', ()=>{
 		
 	}
 
+	let resizeCount = 0;
+	
 	function cancelResize(){
-		inputWindow.removeAttribute('class','scaleUp')
-
+		inputWindow.style.height = "400px";
+		inputWindow.style.width = "270px";
+		inputWindow.style.top = '10%'
+		inputWindow.style.left = '42.5%'
+		inputWindow.style.fontSize = '15px'
+		submit.style.fontSize = '15px'
 	}
 
 	resize.addEventListener('click',()=>{
-		
-		inputWindow.setAttribute('class','scaleUp')
-		resizeWindow()
-		resize.addEventListener('click',()=>{
-			cancelResize()
-		})
+		switch(resizeCount){
+			case 0:
+				console.log('Resized')
+				resizeWindow();
+				resizeCount = 1
+				break;
+			case 1:
+				console.log('Not resized')
+				cancelResize();
+				resizeCount = 0
+				break;
+		}
 	})
 
 	
