@@ -85,8 +85,11 @@ button:hover{
 	background-color: rgb(211, 211, 214);
 	height: 400px;
 	width: 270px;
-	top: 10%;
-	left: 42.5%;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -135px;
+	transform: translate(-50%, -50%);
 	color: white;
 	position: fixed;
 	z-index: 2;
@@ -377,3 +380,16 @@ font-size: 30px;
 #newBook:hover{
 	box-shadow: 2px 2px 10px rgba(255,255,255);
 }
+
+
+@media screen and (max-width: 800px){
+	#inputWindow{
+		height: 400px;
+		width: 270px;
+		top: 25%;
+		left: 50%;
+		margin-top: -200px;
+		margin-left: -135px;
+	}
+}
+	
