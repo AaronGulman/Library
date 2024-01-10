@@ -432,27 +432,21 @@ function createBooks(){
 		newBook.remove()
 		myLibrary.pop(newBook)
 	})
+	
 	let increment = 0;
 
-	addPg.addEventListener('click',()=>{
-		// for(let i = 0; i<3;i++){
-			if(increment < addBook.pages){
-			increment ++
-			}else{
-				(increment === addBook.pages)
-
-				read.textContent = 'Read';
-				readDone.style.background = 'rgba(0,255,0)';
-				pageDisplay.textContent = `Last page: ${addBook.pages}`;
-				increment = addBook.pages;
-				console.log(addBook);
-				
-			
-			}
-
-			pageDisplay.textContent = `Last page: ${increment}`;
-		// }
-	})
+	addPg.addEventListener('click', () => {
+		increment++;
+		if (increment < addBook.pages) {
+		    pageDisplay.textContent = `Last page: ${increment}`;
+		} else {
+		    addBook.read = true;
+		    read.textContent = 'Read';
+		    readDone.style.background = 'rgba(0,255,0)';
+		    pageDisplay.textContent = `Last page: ${addBook.pages}`;
+		    console.log(addBook);
+		}
+	    });
 
 	removePg.addEventListener('click',()=>{
 		if(increment > 0){
